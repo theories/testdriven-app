@@ -1,19 +1,29 @@
 # services/users/manage.py
 
-from flask.cli import FlaskGroup
-
-from project import app, db
-
 import unittest
 
-cli = FlaskGroup(app)
+from flask.cli import FlaskGroup
+
+from project import create_app, db
+from project.api.models import User
 
 
+app = create_app()
+cli = FlaskGroup(create_app=create_app)
+
+
+# for some reason, recreate_db cannot be called from cli but recreatedb works
 @cli.command()
+def recreatedb():
+    # call the original recreate_db() function
+    recreate_db()
+
+
 def recreate_db():
+    # Recreate the db
     db.drop_all()
     db.create_all()
-    db.session_commit()
+    db.session.commit()
 
 
 @cli.command()
