@@ -55,7 +55,7 @@ class TestUserService(BaseTestCase):
                 content_type='application/json'
             )
             data = json.loads(response.data.decode())
-            self.assertEqual(response.status_code(400))
+            self.assertEqual(response.status_code, 400)
             self.assertIn('Invalid payload.', data['message'])
             self.assertIn('fail', data['status'])
 
@@ -65,9 +65,24 @@ class TestUserService(BaseTestCase):
             self.client.post(
                 '/users',
                 data=json.dumps({
-                    'username'
-                })
+                    'username': 'michael',
+                    'email': 'michael@mherman.org'
+                }),
+                content_type='application/json'
             )
+            response = self.client.post(
+                '/users',
+                data=json.dumps({
+                    'username': 'micheal',
+                    'email': 'michael@mherman.org'
+                }),
+                content_type='application/json'
+            )
+            data = json.loads(response.data.decode())
+            self.assertEqual(response.status_code, 400)
+            self.assertIn('Sorry. That email already exists.', data['message'])
+            self.assertIn('fail', data['status'])
+
 
 
 

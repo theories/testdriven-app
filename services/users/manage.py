@@ -23,7 +23,7 @@ def recreate_db():
     # Recreate the db
     db.drop_all()
     db.create_all()
-    db.session_commit()
+    db.session.commit()
 
 
 @cli.command()
