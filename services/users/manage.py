@@ -12,13 +12,7 @@ app = create_app()
 cli = FlaskGroup(create_app=create_app)
 
 
-# for some reason, recreate_db cannot be called from cli but recreatedb works
 @cli.command()
-def recreatedb():
-    # call the original recreate_db() function
-    recreate_db()
-
-
 def recreate_db():
     # Recreate the db
     db.drop_all()
@@ -37,7 +31,7 @@ def test():
     return 1
 
 @cli.command()
-def seeddb():
+def seed_db():
     """Seeds the database."""
     db.session.add(User(username='michael', email="hermanmu@gmail.com"))
     db.session.add(User(username='michaelherman', email="michael@mherman.org"))
