@@ -25,6 +25,7 @@ class TestDevelopmentConfig(TestCase):
             os.environ.get('DATABASE_URL')
         )
 
+
 class TestTestingConfig(TestCase):
     def create_app(self):
         app.config.from_object('project.config.TestingConfig')
@@ -52,5 +53,3 @@ class TestProductionConfig(TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-

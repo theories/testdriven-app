@@ -5,6 +5,7 @@ from sqlalchemy.sql import func
 
 from project import db
 
+
 class User(db.Model):
 
     __tablename__ = 'users'
@@ -26,7 +27,3 @@ class User(db.Model):
             'email': self.email,
             'active': self.active
         }
-
-
-
-

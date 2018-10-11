@@ -22,7 +22,7 @@ def create_app(script_info=None):
     # set up extensions
     db.init_app(app)
 
-    #register blueprints
+    # register blueprints
     from project.api.users import users_blueprint
     app.register_blueprint(users_blueprint)
 
@@ -32,4 +32,3 @@ def create_app(script_info=None):
         return {'app': app, 'db': db}
 
     return app
-
