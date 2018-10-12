@@ -8,3 +8,5 @@ Run the line below in the root directory to build the container
 Hit this URL to test: http://localhost:5001/users/ping
 
 from: https://testdriven.io/part-one-getting-started
+
+[![Build Status](https://travis-ci.org/theories/testdriven-app.svg?branch=master)](https://travis-ci.org/theories/testdriven-app)
